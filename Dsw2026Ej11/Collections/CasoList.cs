@@ -28,16 +28,6 @@ public class CasoList
 
     public Alumno? Buscar(string nombre)
     {
-        /*
-        foreach (var Alumno in _alumnos)
-        {
-            if (Alumno.Nombre.Contains(nombre))
-            {
-                Console.WriteLine($"\nAlumno encontrado:\n Nombre: {nombre}\n Id: {Alumno.Id.ToString()}\n Promedio: {Alumno.Promedio.ToString()}\n");
-            }
-        }
-        */
-
         return _alumnos.Find(a => a.Nombre == nombre);
     }
 
