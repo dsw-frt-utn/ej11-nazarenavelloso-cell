@@ -1,16 +1,39 @@
 ﻿namespace Dsw2026Ej11.Tests;
 
+using Collections;
+using Domain;
+using System.Security.Cryptography.X509Certificates;
 
 internal class Ejemplos
 {
-    //Agregar 3 alumnos a la lista
-    //Listar por consola los alumnos
-    //Buscar por nombre un alumno que exista y mostrar por consola
-    //Buscar por nombre un alumno que no exista y mostrar por consola el texto "No existe"
-    //Eliminar un alumno y listar por consola los alumnos
-    //Eliminar el primer elemento de la lista y listar por consola los alumnos
     public static void EjemploList()
     {
+        var casoList = new CasoList();
+
+        // Agregar 3 alumnos a la lista
+        Alumno a1 = new Alumno(1,"guillermo",8.89);
+        Alumno a2 = new Alumno(2, "sam", 9.32);
+        Alumno a3 = new Alumno(3, "naza", 7.89);
+
+        casoList.Agregar(a1,a2,a3);
+
+        //Listar por consola los alumnos
+        casoList.DevolverLista();
+
+        //Buscar por nombre un alumno que exista y mostrar por consola
+        casoList.Buscar("guillermo");
+
+        //Buscar por nombre un alumno que no exista y mostrar por consola el texto "No existe"
+        if (casoList.Buscar("bernabe") is null)
+        {
+            Console.WriteLine("\nNo existe\n");
+        }
+
+        //Eliminar un alumno y listar por consola los alumnos
+        casoList.Eliminar(a3);
+
+        //Eliminar el primer elemento de la lista y listar por consola los alumnos
+        casoList.EliminarPosicion(0);
 
     }
 
