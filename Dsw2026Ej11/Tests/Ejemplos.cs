@@ -6,6 +6,7 @@ using System.Security.Cryptography.X509Certificates;
 
 internal class Ejemplos
 {
+
     public static void EjemploList()
     {
         var casoList = new CasoList();
@@ -44,6 +45,36 @@ internal class Ejemplos
     //Eliminar un alumno por clave y listar por consola los alumnos
     public static void EjemploDictionary()
     {
+        var casoDictionary = new CasoDictionary();
+
+        Alumno a1 = new Alumno(1, "ana", 8.89);
+        Alumno a2 = new Alumno(2, "olivia", 9.32);
+        Alumno a3 = new Alumno(3, "martina", 7.89);
+
+        //Agregar 3 alumnos al diccionario
+
+        casoDictionary.Agregar(58340, a1);
+        casoDictionary.Agregar(57799, a2);
+        casoDictionary.Agregar(59870, a3);
+
+        //Listar por consola los alumnos
+
+        casoDictionary.DevolverDiccionario();
+
+        //Buscar un alumno por clave y mostrar por consola
+
+        Console.WriteLine($"\nAlumno encontrado: {casoDictionary.Buscar(58340)}");
+
+        //Buscar un alumno por clave, pero que no exista, y mostrar por consola el texto "No existe"
+
+        if (casoDictionary.Buscar(54632) is null)
+        {
+            Console.WriteLine("\nNo existe");
+        }
+
+        //Eliminar un alumno por clave y listar por consola los alumnos
+
+        casoDictionary.Eliminar(59870);
 
     }
 
