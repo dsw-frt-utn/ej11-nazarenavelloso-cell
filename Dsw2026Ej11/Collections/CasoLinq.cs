@@ -1,4 +1,5 @@
 ﻿namespace Dsw2026Ej11.Collections;
+using Domain;
 
 /*
  * Para cada punto crear un método que permita:
@@ -16,4 +17,106 @@
  */
 public class CasoLinq
 {
+
+    List<Libro> _libros = Libro.CrearLista();
+
+        public Libro? GetPrimero(){
+
+        return (from libro in _libros
+
+            where libro.Id ==1
+            select libro).FirstOrDefault();
+        }
+
+    public Libro? GetUltimo()
+    {
+
+        return (from libro in Libro.CrearLista()
+
+                where libro.Id == 30
+                select libro).LastOrDefault();
+    }
+
+    public decimal getTotalPrecios()
+    {
+        return _libros.Sum(lib => lib.Precio);
+ 
+    }
+
+    public decimal getPromedioPrecios()
+    {
+        return _libros.Average(lib => lib.Precio);
+    }
+
+    public List<Libro> GetListById()
+    {
+        List<Libro> librosFiltrados = _libros.Where(lib => lib.Id > 15).ToList();
+
+        foreach(var libro in librosFiltrados)
+        {
+            Console.WriteLine(libro.Titulo);
+        }
+
+        return null;
+    }
+
+    public List<string> GetLibros()
+    {
+
+        var librosLista = _libros
+         .Select(lib => $"{lib.Titulo} - {lib.Precio:C}")
+         .ToList();
+
+        foreach (var libro in librosLista)
+        {
+            Console.WriteLine(libro);
+        }
+
+        return librosLista;
+    }
+
+    public Libro GetMayorPrecio()
+    {
+        return _libros.OrderByDescending(l => l.Precio).FirstOrDefault();
+    }
+
+    public Libro GetMenorPrecio()
+    {
+        return _libros.OrderBy(l => l.Precio).FirstOrDefault();
+    }
+
+
+    public List <Libro> GetMayorPromedio()
+    {
+        var promedio = getPromedioPrecios();
+
+        List<Libro> librosMayores = _libros.Where(lib => lib.Precio > promedio).ToList();
+
+
+        foreach (var libro in librosMayores)
+        {
+            Console.WriteLine(libro);
+        }
+
+        return librosMayores;
+
+    }
+
+    public List <Libro> OrdenarDescendente()
+    {
+        List<Libro> librosOrdenados = _libros
+       .OrderByDescending(libro => libro.Titulo)
+       .ToList();
+
+        foreach (var libro in librosOrdenados)
+        {
+            Console.WriteLine(libro);
+        }
+
+        return librosOrdenados;
+
+    }
+
 }
+
+
