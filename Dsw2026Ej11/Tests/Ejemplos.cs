@@ -78,9 +78,24 @@ internal class Ejemplos
 
     }
 
-    //Realizar una llamada a cada método definido en CasoLinq y mostar por consola según corresponda
+    //Realizar una llamada a cada método definido en CasoLinq y mostrar por consola según corresponda
     public static void EjemploLinq()
     {
+        var casoLinq = new CasoLinq();
+
+        Console.WriteLine($"\n{casoLinq.GetPrimero()}");
+        Console.WriteLine($"\n{casoLinq.GetUltimo()}");
+        Console.WriteLine($"\n{casoLinq.getTotalPrecios().ToString("C")}");
+        Console.WriteLine($"\n{casoLinq.getPromedioPrecios().ToString("C")}\n");
+        Console.WriteLine($"\n{casoLinq.GetListById()}");
+        casoLinq.GetLibros();
+        Console.WriteLine($"\n{casoLinq.GetMayorPrecio()}");
+        Console.WriteLine($"\n{casoLinq.GetMenorPrecio()}\n");
+        casoLinq.GetMayorPromedio();
+        Console.WriteLine("");
+        casoLinq.OrdenarDescendente();
+        
+
 
     }
 }
